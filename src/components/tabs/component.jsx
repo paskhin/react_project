@@ -1,10 +1,10 @@
 import { Tab } from "../tab/component"
 
-export function Tabs({ restaurants, onTabClick }) {
+export function Tabs({ restaurants, onTabClick, activeTabIndex }) {
   return (
     <div>
-      {restaurants.map(({id, name}) => (
-        <Tab onTabClick={onTabClick} id={id} name={name}/>
+      {restaurants.map(({name}, index) => (
+        <Tab onClick={() => onTabClick(index)} name={name} isActive={activeTabIndex === index}/>
       ))}
     </div>
   )

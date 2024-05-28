@@ -1,11 +1,10 @@
-export function Tab({ id, name, onTabClick }) {
-  const handleClick = () => {
-    onTabClick(id)
-  }
+export function Tab({ name, onClick, isActive }) {
+
   return (
     <button
-      onClick={handleClick}
-      id={id}>
+      onClick={onClick}
+      disabled={isActive}
+    >
       {name}
     </button>
   )
