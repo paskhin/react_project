@@ -1,5 +1,6 @@
 import { Dishes } from "../dishes/component"
 import { Reviews } from "../reviews/component"
+import { Form } from "../form/component";
 export function Restaurant({ restaurant }) {
   if (!restaurant) {
     return <div>Нет данных</div>
@@ -20,6 +21,7 @@ export function Restaurant({ restaurant }) {
         <>
           <h3>Отзывы</h3>
           <Reviews reviews={reviews} />
+          <Form />
         </>
       )}
     </div>
