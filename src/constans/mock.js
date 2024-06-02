@@ -140,3 +140,5 @@ export const restaurants = [
     ],
   },
 ];
+
+export const user = 'Tom Hardy'
