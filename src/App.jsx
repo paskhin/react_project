@@ -3,14 +3,10 @@ import { Layout } from './components/layout/component'
 import { Restaurant } from './components/restaurant/component'
 import { Tabs } from './components/tabs/component'
 import { SiteBar } from './components/site-bar/component'
-import { ThemeContext } from './components/contexsts/theme'
-import { AuthorisationContext } from './components/contexsts/authorization'
-import { user } from './constans/mock'
-
+import { ThemeContextProvider } from './components/contexsts/them/provider'
+import { UserContextProvider } from './components/contexsts/user/provider'
 
 export function App({ restaurants }) {
-  const [theme, setTheme] = useState(null);
-  const [authorisation, setAuthorization] = useState('Войти')
   const [activeRestaurantIndex, setActiveRestaurantIndex] = useState(0);
 
   const activeRestaurant = restaurants[activeRestaurantIndex]
@@ -18,12 +14,9 @@ export function App({ restaurants }) {
     return 'Нет данных'
   }
   return (
-    <ThemeContext.Provider value={theme}>
-      <AuthorisationContext.Provider value={authorisation}>
-        <Layout
-          onChange={() => { theme === 'lightBlue' ? setTheme(null) : setTheme('lightBlue') }}
-          isAuthorization={() => { authorisation === 'Войти' ? setAuthorization(user) : setAuthorization('Войти') }}
-        >
+    <ThemeContextProvider>
+      <UserContextProvider>
+        <Layout>
           <SiteBar />
           <Tabs
             restaurants={restaurants}
@@ -32,8 +25,10 @@ export function App({ restaurants }) {
           />
           <Restaurant restaurant={activeRestaurant} />
         </Layout>
-      </AuthorisationContext.Provider>
-    </ThemeContext.Provider>
+      </UserContextProvider>
+    </ThemeContextProvider>
+
+
   )
 }
 

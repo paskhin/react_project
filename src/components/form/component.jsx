@@ -1,9 +1,7 @@
 import { useReducer } from "react"
 import { Rating } from "../rating/component"
 import { DEFAULT_FORM_VALUE } from "../../constans/settings";
-import { useContext } from "react"
-import { ThemeContext } from "../contexsts/theme"
-
+import { Button } from "../button/component";
 export function reducer(state, { type, payload } = {}) {
 
   switch (type) {
@@ -27,7 +25,6 @@ export function reducer(state, { type, payload } = {}) {
 
 export function Form() {
   const [form, dispatch] = useReducer(reducer, DEFAULT_FORM_VALUE);
-  const theme = useContext(ThemeContext)
   return (
     <div>
       <div>
@@ -48,12 +45,11 @@ export function Form() {
         onRatingClick={(grad) => { dispatch({ type: 'setRating', payload: grad }) }}
         value={form.rating}
       />
-      <button
-        style={{ backgroundColor: theme }}
+      <Button
         onClick={() => { dispatch({ type: 'setForm', payload: DEFAULT_FORM_VALUE }) }}
       >
         Сохранить
-      </button>
+      </Button>
     </div>
   )
 }

@@ -1,15 +1,13 @@
-import { useContext } from "react"
-import { ThemeContext } from "../contexsts/theme"
+import { Button } from "../button/component"
 
 export function Tab({ name, onClick, isActive }) {
-  const theme = useContext(ThemeContext)
+
   return (
-    <button
-      style={{backgroundColor: theme}}
+    <Button
       onClick={onClick}
       disabled={isActive}
     >
       {name}
-    </button>
+    </Button>
   )
 }

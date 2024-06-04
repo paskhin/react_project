@@ -1,32 +1,29 @@
 import { createPortal } from "react-dom";
+import { Button } from "../button/component";
 
-
-export function Modal({ onContainerClick, children }) {
-  return <>
-    {createPortal(<div onClick={(event) => { onContainerClick(event) }} style={{
-      position: 'fixed',
-      top: '0',
-      left: '0',
-      display: 'flex',
-      width: '100%',
-      height: '100%',
-      backgroundColor: 'rgba(242, 242, 242, 0.5)',
-      zindex: '1'
-    }}>
-      <div id="modalForm" style={{
+export function Modal({ children, onClose }) {
+  return createPortal(
+    <>
+      <div style={{
         position: 'absolute',
-        top: '50%',
+        width: '100%',
+        height: '100%',
+        top: 0,
+        left: 0,
+        backgroundColor: 'gray',
+        opacity: '0.3',
+        zIndex: 1,
+      }}
+      onClick={onClose} />
+      <div style={{
+        position: 'absolute',
+        top: '50vh',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        width: '350px',
-        height: '60px',
-        backgroundColor: 'lightGrey',
-        padding: '20px',
-        border: '1px solid grey'
-      }}
-      >
+        zIndex: 2,
+      }}>
+        <Button onClick={onClose}>Close</Button>
         {children}
       </div>
-    </div>, document.getElementById('modal'))}
-  </>
+    </>, document.getElementById('modal'))
 }

@@ -1,17 +1,14 @@
-import { useContext } from "react"
-import { ThemeContext } from "../contexsts/theme"
-
+import { Button } from "../button/component"
 export function Counter({value, increment, decrement}) {
-  const theme = useContext(ThemeContext);
   return (
     <div>
-      <button style={{backgroundColor: theme}} onClick={decrement}>
+      <Button onClick={decrement}>
         -
-      </button>
+      </Button>
       {value}
-      <button style={{backgroundColor: theme}} onClick={increment}>
+      <Button onClick={increment}>
       +
-      </button>
+      </Button>
     </div>
   )
 }
