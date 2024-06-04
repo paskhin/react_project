@@ -1,11 +1,13 @@
+import { Button } from "../button/component"
+
 export function Tab({ name, onClick, isActive }) {
 
   return (
-    <button
+    <Button
       onClick={onClick}
       disabled={isActive}
     >
       {name}
-    </button>
+    </Button>
   )
 }

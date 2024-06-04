@@ -1,14 +1,14 @@
-
+import { Button } from "../button/component"
 export function Counter({value, increment, decrement}) {
   return (
     <div>
-      <button onClick={decrement}>
+      <Button onClick={decrement}>
         -
-      </button>
+      </Button>
       {value}
-      <button onClick={increment}>
+      <Button onClick={increment}>
       +
-      </button>
+      </Button>
     </div>
   )
 }

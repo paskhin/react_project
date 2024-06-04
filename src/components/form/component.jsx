@@ -1,12 +1,30 @@
 import { useReducer } from "react"
 import { Rating } from "../rating/component"
-import { reducer } from "../../hooks/reducer";
 import { DEFAULT_FORM_VALUE } from "../../constans/settings";
+import { Button } from "../button/component";
+export function reducer(state, { type, payload } = {}) {
 
+  switch (type) {
+    case 'setName':
+      return { ...state, name: payload };
+    case 'setText':
+      return { ...state, text: payload };
+    case 'setRating':
+      return { ...state, rating: payload };
+    case 'setForm':
+      return {
+        ...state,
+        rating: payload.rating,
+        text: payload.text,
+        name: payload.name
+      };
+    default:
+      return state
+  }
+}
 
 export function Form() {
   const [form, dispatch] = useReducer(reducer, DEFAULT_FORM_VALUE);
-
   return (
     <div>
       <div>
@@ -22,12 +40,16 @@ export function Form() {
           onChange={(event) => { dispatch({ type: 'setText', payload: event.target.value }) }}
         />
       </div>
-      <Rating onRatingClick={(grad) => { dispatch({ type: 'setRating', payload: grad }) }} />
-      <button
+      <Rating
+        maxRating={5}
+        onRatingClick={(grad) => { dispatch({ type: 'setRating', payload: grad }) }}
+        value={form.rating}
+      />
+      <Button
         onClick={() => { dispatch({ type: 'setForm', payload: DEFAULT_FORM_VALUE }) }}
       >
         Сохранить
-      </button>
+      </Button>
     </div>
   )
 }

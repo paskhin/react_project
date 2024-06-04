@@ -3,12 +3,11 @@ import { useState, useEffect } from "react";
 export function SiteBar() {
   const [scroll, setScroll] = useState(0);
 
-  const handleScroll = () => {
-    let scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    setScroll(window.scrollY / scrollHeight * 100);
-  };
-
   useEffect(() => {
+    const handleScroll = () => {
+      let scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      setScroll(window.scrollY / scrollHeight * 100);
+    };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
