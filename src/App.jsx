@@ -5,12 +5,17 @@ import { Tabs } from './components/tabs/component'
 import { SiteBar } from './components/site-bar/component'
 import { ThemeContextProvider } from './components/contexsts/them/provider'
 import { UserContextProvider } from './components/contexsts/user/provider'
+import { useSelector } from 'react-redux'
 
-export function App({ restaurants }) {
-  const [activeRestaurantIndex, setActiveRestaurantIndex] = useState(0);
+export function App() {
+  const restaurantsIds = useSelector((state) => state.restaurant.ids)
+  const [activeRestaurantId, setActiveRestaurantId] = useState(restaurantsIds[0]);
 
-  const activeRestaurant = restaurants[activeRestaurantIndex]
-  if (!restaurants) {
+  const handleActiveTab = (id) => {
+    setActiveRestaurantId(id)
+  }
+
+  if (!activeRestaurantId) {
     return 'Нет данных'
   }
   return (
@@ -19,17 +24,12 @@ export function App({ restaurants }) {
         <Layout>
           <SiteBar />
           <Tabs
-            restaurants={restaurants}
-            onTabClick={setActiveRestaurantIndex}
-            activeTabIndex={activeRestaurantIndex}
+            onTabClick={handleActiveTab}
+            activeRestaurantId={activeRestaurantId}
           />
-          <Restaurant restaurant={activeRestaurant} />
+          <Restaurant activeRestaurantId={activeRestaurantId} />
         </Layout>
       </UserContextProvider>
     </ThemeContextProvider>
-
-
   )
 }
-
-

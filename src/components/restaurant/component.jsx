@@ -1,7 +1,12 @@
 import { Dishes } from "../dishes/component"
 import { Reviews } from "../reviews/component"
 import { Form } from "../form/component";
-export function Restaurant({ restaurant }) {
+import { useSelector } from "react-redux";
+
+export function Restaurant({ activeRestaurantId }) {
+  const restaurant = useSelector((state) =>
+    state.restaurant.entities[activeRestaurantId]);
+
   if (!restaurant) {
     return <div>Нет данных</div>
   }
@@ -14,13 +19,13 @@ export function Restaurant({ restaurant }) {
       {!!menu.length && (
         <>
           <h3>Меню</h3>
-          <Dishes menu={menu} />
+          <Dishes dishesIds={menu} />
         </>
       )}
       {!!reviews.length && (
         <>
           <h3>Отзывы</h3>
-          <Reviews reviews={reviews} />
+          <Reviews reviewIds={reviews} />
           <Form />
         </>
       )}
