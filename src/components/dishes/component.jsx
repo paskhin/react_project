@@ -1,11 +1,11 @@
-import { Dish } from "../dish/component"
+import { DishContainer } from "../dish/container"
 
 export function Dishes({ dishesIds }) {
   return (
     <ul>
       {dishesIds.map((id) => (
         <li>
-          <Dish dishId={id} />
+          <DishContainer dishId={id} />
         </li>
       ))}
     </ul>

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { normalizedDishes } from "../../constans/normalized-mock";
+import { normalizedDishes } from "../../../constans/normalized-mock";
 
 export const DishSlice = createSlice({
   name: 'dish',

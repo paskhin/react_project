@@ -1,14 +1,11 @@
 import { Dishes } from "../dishes/component"
 import { Reviews } from "../reviews/component"
 import { Form } from "../form/component";
-import { useSelector } from "react-redux";
 
-export function Restaurant({ activeRestaurantId }) {
-  const restaurant = useSelector((state) =>
-    state.restaurant.entities[activeRestaurantId]);
+export function Restaurant({ restaurant }) {
 
   if (!restaurant) {
-    return <div>Нет данных</div>
+    return <div>Select a restaurant</div>
   }
 
   const { menu, reviews } = restaurant;
