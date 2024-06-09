@@ -1,13 +1,13 @@
 import { Button } from "../button/component"
 
-export function Tab({ name, onClick, isActive }) {
+export function Tab({ title, onClick, isActive }) {
 
   return (
     <Button
       onClick={onClick}
       disabled={isActive}
     >
-      {name}
+      {title}
     </Button>
   )
 }

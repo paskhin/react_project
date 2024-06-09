@@ -1,9 +1,11 @@
 import { Dishes } from "../dishes/component"
 import { Reviews } from "../reviews/component"
 import { Form } from "../form/component";
+
 export function Restaurant({ restaurant }) {
+
   if (!restaurant) {
-    return <div>Нет данных</div>
+    return <div>Select a restaurant</div>
   }
 
   const { menu, reviews } = restaurant;
@@ -14,13 +16,13 @@ export function Restaurant({ restaurant }) {
       {!!menu.length && (
         <>
           <h3>Меню</h3>
-          <Dishes menu={menu} />
+          <Dishes dishesIds={menu} />
         </>
       )}
       {!!reviews.length && (
         <>
           <h3>Отзывы</h3>
-          <Reviews reviews={reviews} />
+          <Reviews reviewIds={reviews} />
           <Form />
         </>
       )}
