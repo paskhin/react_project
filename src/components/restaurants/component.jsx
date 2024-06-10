@@ -3,7 +3,7 @@ import { RestaurantTabsContainer } from "../restaurant-tabs/container";
 import { useState } from "react"
 
 export function Restaurants() {
-  const [activeRestaurantId, setActiveRestaurantId] = useState(null);
+  const [activeRestaurantId, setActiveRestaurantId] = useState();
 
   return (
     <>
