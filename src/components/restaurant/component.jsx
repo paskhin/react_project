@@ -1,14 +1,14 @@
-import { Dishes } from "../dishes/component"
-import { Reviews } from "../reviews/component"
-import { Form } from "../form/component";
+import { ReviewsContainer } from "../reviews/container";
+import { DishesContainer } from "../dishes/container";
+import { NewReviewFormContainer } from "../new-review-form-container/container";
 
 export function Restaurant({ restaurant }) {
 
   if (!restaurant) {
-    return <div>Select a restaurant</div>
+    return;
   }
 
-  const { menu, reviews } = restaurant;
+  const { menu, id, reviews } = restaurant;
 
   return (
     <div>
@@ -16,14 +16,14 @@ export function Restaurant({ restaurant }) {
       {!!menu.length && (
         <>
           <h3>Меню</h3>
-          <Dishes dishesIds={menu} />
+          <DishesContainer restaurantId={id} />
         </>
       )}
       {!!reviews.length && (
         <>
           <h3>Отзывы</h3>
-          <Reviews reviewIds={reviews} />
-          <Form />
+          <ReviewsContainer restaurantId={id} />
+          <NewReviewFormContainer restaurantId={id}/>
         </>
       )}
     </div>

@@ -1,38 +1,30 @@
 import { useReducer } from "react"
 import { Rating } from "../rating/component"
 import { DEFAULT_FORM_VALUE } from "../../constans/settings";
-import { Button } from "../button/component";
-export function reducer(state, { type, payload } = {}) {
 
+export function reducer(state, { type, payload } = {}) {
   switch (type) {
-    case 'setName':
-      return { ...state, name: payload };
     case 'setText':
       return { ...state, text: payload };
     case 'setRating':
       return { ...state, rating: payload };
-    case 'setForm':
-      return {
-        ...state,
-        rating: payload.rating,
-        text: payload.text,
-        name: payload.name
-      };
+    case 'clear':
+      return { ...DEFAULT_FORM_VALUE };
     default:
       return state
   }
 }
 
-export function Form() {
-  const [form, dispatch] = useReducer(reducer, DEFAULT_FORM_VALUE);
+export function Form({
+  initialValue = DEFAULT_FORM_VALUE,
+  onSaveClick,
+  onCancelClick
+}) {
+  const [form, dispatch] = useReducer(reducer, initialValue, ({ text, rating }) => ({ text, rating }));
+
+
   return (
     <div>
-      <div>
-        <span>Name</span>
-        <input type="text"
-          value={form.name}
-          onChange={(event) => { dispatch({ type: 'setName', payload: event.target.value }) }} />
-      </div>
       <div>
         <span>Text</span>
         <input type="text"
@@ -45,11 +37,11 @@ export function Form() {
         onRatingClick={(grad) => { dispatch({ type: 'setRating', payload: grad }) }}
         value={form.rating}
       />
-      <Button
-        onClick={() => { dispatch({ type: 'setForm', payload: DEFAULT_FORM_VALUE }) }}
-      >
-        Сохранить
-      </Button>
+      <button onClick={() => onSaveClick({...initialValue, ...form}) }>Save</button>
+      {onCancelClick &&
+        <button onClick={onCancelClick}>Cancel</button>
+      }
+
     </div>
   )
 }

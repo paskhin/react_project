@@ -1,11 +1,11 @@
 import { ReviewContainer } from "../review/container"
 
-export function Reviews({ reviewIds }) {
+export function Reviews({ reviews }) {
   return (
     <ul>
-      {reviewIds.map((id) => (
+      {reviews.map((review) => (
         <li>
-          <ReviewContainer reviewId={id} />
+          <ReviewContainer review={review} />
         </li>
       ))}
     </ul>

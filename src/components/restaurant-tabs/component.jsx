@@ -1,12 +1,12 @@
-import { RestaurantTab} from "../restaurant-tab/container"
+import { Tab } from "../tab/component"
 
-export function RestaurantTabs({ restaurantIds, onTabClick, activeRestaurantId }) {
+export function RestaurantTabs({ restaurants, onTabClick, activeRestaurantId }) {
 
   return (
     <div>
-      {restaurantIds.map((id) => (
-        <RestaurantTab
-          id={id}
+      {restaurants.map(({id, name}) => (
+        <Tab
+          title={name}
           onClick={() => onTabClick(id)}
           isActive={id === activeRestaurantId}
         />
