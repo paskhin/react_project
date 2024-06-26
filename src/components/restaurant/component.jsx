@@ -1,6 +1,5 @@
-import { ReviewsContainer } from "../reviews/container";
-import { DishesContainer } from "../dishes/container";
 import { NewReviewFormContainer } from "../new-review-form-container/container";
+import { NavLink, Outlet } from "react-router-dom";
 
 export function Restaurant({ restaurant }) {
 
@@ -15,14 +14,13 @@ export function Restaurant({ restaurant }) {
       <h2>{restaurant.name}</h2>
       {!!menu.length && (
         <>
-          <h3>Меню</h3>
-          <DishesContainer restaurantId={id} />
+          <NavLink to='menu'>Меню</NavLink>
+          <NavLink to='reviews'>Отзывы</NavLink>
+          <Outlet />
         </>
       )}
       {!!reviews.length && (
         <>
-          <h3>Отзывы</h3>
-          <ReviewsContainer restaurantId={id} />
           <NewReviewFormContainer restaurantId={id}/>
         </>
       )}

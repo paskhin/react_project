@@ -3,6 +3,7 @@ import { Counter } from "../counter/component"
 import { selectDishCount } from "../../redux/ui/selectors";
 import { decrement, increment } from "../../redux/ui/cart";
 import { useCallback } from "react";
+import { Link } from "react-router-dom";
 
 export function Dish({ dish }) {
   const { id } = dish;
@@ -22,7 +23,7 @@ export function Dish({ dish }) {
 
   return (
     <>
-      <span>{name}</span>
+      <Link to={`/dish/${id}`}>{name}</Link>
       <>
         <Counter
           value={count}

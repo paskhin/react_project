@@ -1,13 +1,12 @@
-import { Button } from "../button/component"
+import { Link } from "react-router-dom"
 
-export function Tab({ title, onClick, isActive }) {
+export function Tab({ title, to }) {
 
   return (
-    <Button
-      onClick={onClick}
-      disabled={isActive}
+    <Link
+      to={to}
     >
       {title}
-    </Button>
+    </Link>
   )
 }

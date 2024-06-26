@@ -1,14 +1,13 @@
 import { Reviews } from "./component";
 import { useGetReviewsByRestaurantIdQuery } from "../../redux/entities/service/api";
+import { useParams } from "react-router-dom";
 
-export function ReviewsContainer({ restaurantId }) {
-  const { data: reviews, isFetching} = useGetReviewsByRestaurantIdQuery(restaurantId);
+export function ReviewsContainer() {
+  const {restaurantId} = useParams();
+  const { data: reviews } = useGetReviewsByRestaurantIdQuery(restaurantId);
   if (!reviews) {
     return
   }
 
-  if (isFetching) {
-    return <div>Loading...</div>
-  }
   return <Reviews reviews={reviews} />
 }

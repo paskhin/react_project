@@ -2,7 +2,7 @@ import { RestaurantTabs } from "./component";
 import { useGetRestaurantsQuery } from "../../redux/entities/service/api";
 
 
-export function RestaurantTabsContainer({ onTabClick, activeRestaurantId }) {
+export function RestaurantTabsContainer() {
 
   const { data: restaurants, isLoading } = useGetRestaurantsQuery();
   if (isLoading) {
@@ -12,9 +12,7 @@ export function RestaurantTabsContainer({ onTabClick, activeRestaurantId }) {
   return (
     <>
       <RestaurantTabs
-        onTabClick={onTabClick}
         restaurants={restaurants}
-        activeRestaurantId={activeRestaurantId}
       />
     </>
   )
