@@ -1,29 +1,27 @@
-import { Dishes } from "../dishes/component"
-import { Reviews } from "../reviews/component"
-import { Form } from "../form/component";
+import { NewReviewFormContainer } from "../new-review-form-container/container";
+import { NavLink, Outlet } from "react-router-dom";
 
 export function Restaurant({ restaurant }) {
 
   if (!restaurant) {
-    return <div>Select a restaurant</div>
+    return;
   }
 
-  const { menu, reviews } = restaurant;
+  const { menu, id, reviews } = restaurant;
 
   return (
     <div>
       <h2>{restaurant.name}</h2>
       {!!menu.length && (
         <>
-          <h3>Меню</h3>
-          <Dishes dishesIds={menu} />
+          <NavLink to='menu'>Меню</NavLink>
+          <NavLink to='reviews'>Отзывы</NavLink>
+          <Outlet />
         </>
       )}
       {!!reviews.length && (
         <>
-          <h3>Отзывы</h3>
-          <Reviews reviewIds={reviews} />
-          <Form />
+          <NewReviewFormContainer restaurantId={id}/>
         </>
       )}
     </div>

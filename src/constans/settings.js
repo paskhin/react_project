@@ -1,5 +1,5 @@
 export const DEFAULT_FORM_VALUE = {
-  name: '',
+  // name: '',
   text: '',
   rating: ''
 }

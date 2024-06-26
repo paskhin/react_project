@@ -1,29 +1,34 @@
-import { useEffect } from "react"
-import { useCount } from "../../hooks/use-count";
+import { useDispatch, useSelector } from "react-redux";
 import { Counter } from "../counter/component"
-
+import { selectDishCount } from "../../redux/ui/selectors";
+import { decrement, increment } from "../../redux/ui/cart";
+import { useCallback } from "react";
+import { Link } from "react-router-dom";
 
 export function Dish({ dish }) {
-
+  const { id } = dish;
   const { price, name } = dish;
-  const { increment, decrement, count } = useCount();
 
-  useEffect(() => {
-    increment()
-  }, [increment]);
+  const count = useSelector((state) => selectDishCount(state, id))
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    decrement()
-  }, [decrement])
+  const handleIncrement = useCallback(
+    () => dispatch(increment(id)),
+    [id]
+  );
+  const handleDecrement = useCallback(
+    () => dispatch(decrement(id)),
+    [id]
+  );
 
   return (
     <>
-      <span>{name}</span>
+      <Link to={`/dish/${id}`}>{name}</Link>
       <>
         <Counter
           value={count}
-          increment={increment}
-          decrement={decrement}
+          increment={handleIncrement}
+          decrement={handleDecrement}
         />
         {count * price}
       </>

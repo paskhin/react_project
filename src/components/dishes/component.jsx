@@ -1,14 +1,16 @@
 import { DishContainer } from "../dish/container"
 
-export function Dishes({ dishesIds }) {
+export function Dishes({ dishes }) {
   return (
+  <>
     <ul>
-      {dishesIds.map((id) => (
+      {dishes.map((dish) => (
         <li>
-          <DishContainer dishId={id} />
+          <DishContainer dish={dish} />
         </li>
       ))}
     </ul>
+  </>
   )
 }
 

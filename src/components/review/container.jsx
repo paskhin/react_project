@@ -1,9 +1,18 @@
-import { useSelector } from "react-redux"
+import { useGetUsersQuery } from "../../redux/entities/service/api";
+import { selectEntityFromResult } from "../../redux/entities/service/selectors";
 import { Review } from "./component";
-import { selectReviewById } from "../../redux/entities/review/selectors";
 
-export function ReviewContainer({ reviewId }) {
-  const review = useSelector((state) => selectReviewById(state, reviewId));
+export function ReviewContainer({ review }) {
 
-  return  <Review review={review}/>
+  const { data: user } = useGetUsersQuery(undefined, {
+    selectFromResult: selectEntityFromResult(review.userId)
+  });
+
+  if (!user) {
+    return
+  }
+  if (!review) {
+    return null
+  }
+  return <Review review={review} user={user} />
 }
