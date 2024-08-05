@@ -1,0 +1,18 @@
+.root {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+  button {
+    background-color: #979797;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .value {
+    display: block;
+    padding: 0;
+  }
+}

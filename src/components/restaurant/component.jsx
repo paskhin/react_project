@@ -1,5 +1,7 @@
 import { NewReviewFormContainer } from "../new-review-form-container/container";
 import { NavLink, Outlet } from "react-router-dom";
+import styles from "./styles.module.scss"
+import classNames from "classnames";
 
 export function Restaurant({ restaurant }) {
 
@@ -10,18 +12,20 @@ export function Restaurant({ restaurant }) {
   const { menu, id, reviews } = restaurant;
 
   return (
-    <div>
-      <h2>{restaurant.name}</h2>
+    <div className={classNames(styles.root)}>
+      <h2>{restaurant.name.toUpperCase()}</h2>
       {!!menu.length && (
-        <>
-          <NavLink to='menu'>Меню</NavLink>
-          <NavLink to='reviews'>Отзывы</NavLink>
+        <div>
+          <div className={classNames(styles.subMenu)}>
+            <NavLink className={classNames(styles.menuTab)} to='menu'>Меню</NavLink>
+            <NavLink className={classNames(styles.reviewsTab)} to='reviews'>Отзывы</NavLink>
+          </div>
           <Outlet />
-        </>
+        </div>
       )}
       {!!reviews.length && (
         <>
-          <NewReviewFormContainer restaurantId={id}/>
+          <NewReviewFormContainer restaurantId={id} />
         </>
       )}
     </div>

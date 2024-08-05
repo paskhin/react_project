@@ -1,17 +1,16 @@
-import { TogglerTheme } from "../toggler-theme/component";
-import { AuthorizationButton } from "../authorization-button/component";
-import { ContainerCartIndicator } from "../cart-indicator/container";
-import { Link } from "react-router-dom";
+import { Logo } from "../logo/component";
+import { Navigation } from "../navigation/component";
+import { UserMenu } from "../user-menu/component";
+import styles from "./styles.module.scss"
+import classNames from "classnames";
+
 export function Header() {
   return (
-    <header>
-      <h2>Header</h2>
-      <Link to='/'>Home</Link>
-      <Link to='/contacts'>Contacts</Link>
-      <Link to='/restaurants'>Restaurants</Link>
-      <TogglerTheme />
-      <AuthorizationButton />
-      <ContainerCartIndicator />
+    <header className={classNames(styles.root)}>
+      <h2 className="visually-hidden">Anyfood - сервис доставки еды</h2>
+      <Logo />
+      <Navigation />
+      <UserMenu />
     </header>
   )
 }

@@ -19,7 +19,7 @@ export function SiteBar() {
       left: '0',
       width: `${scroll}%`,
       height: '5px',
-      backgroundColor: 'red'
+      backgroundColor: '#FFD25D'
     }}></div>
   )
 }

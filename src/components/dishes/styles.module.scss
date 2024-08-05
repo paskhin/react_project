@@ -1,0 +1,21 @@
+.root {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  gap: 50px;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 50px;
+  list-style-type: none;
+
+  .dish {
+    color: $color-default-white;
+    background: linear-gradient(90deg, #494544 0%, #504B4A 100%);
+    width: 25%;
+    border-radius: 10px;
+  }
+}
+
+@include hoverLink {
+  color: $color-hover;
+}

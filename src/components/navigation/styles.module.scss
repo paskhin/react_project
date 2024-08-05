@@ -1,0 +1,14 @@
+.root {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  a {
+    color: $color-default-white;
+  }
+}
+
+@include hoverLink {
+  color: $color-hover;
+}
+
+

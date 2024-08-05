@@ -1,6 +1,6 @@
 import { Navigate, RouterProvider, createBrowserRouter } from "react-router-dom";
-import { HomePage } from "./pages/home-page";
-import { ContactsPage } from "./pages/contacts";
+import { HomePage } from "./pages/home/home-page";
+import { ContactsPage } from "./pages/contacts/contacts";
 import { RestaurantsPage } from "./pages/restaurants-page";
 import { Layout } from "./components/layout/component";
 import { ThemeContextProvider } from "./components/contexsts/them/provider";

@@ -3,6 +3,11 @@ import { Button } from "../button/component"
 import { Modal } from "../modal/component";
 import { useCallback, useState } from "react";
 import { AuthorizationForm } from "../authorization-form/component";
+
+import styles from "./styles.module.scss"
+import classNames from "classnames";
+
+
 export function AuthorizationButton() {
   const { user, logout, login } = useUser();
   const [isVisible, setIsVisible] = useState(false);
@@ -17,7 +22,7 @@ export function AuthorizationButton() {
   }, [login, handleClose]);
 
   return (
-    <div>
+    <div className={classNames(styles.root)}>
       <span>{user}</span>
       {user ? (<Button onClick={logout}>Logout</Button>) :
         (<Button onClick={() => setIsVisible(true)}>Login</Button>)}

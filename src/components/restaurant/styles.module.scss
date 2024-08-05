@@ -1,0 +1,30 @@
+.root {
+  padding: 50px 100px;
+  background: linear-gradient(360deg, #5c5b5c 0%, #504f4f 100%);
+  h2 {
+    color: $color-default-white;
+    text-align: center;
+    margin: 0;
+    margin-bottom: 50px;
+  }
+
+  .subMenu {
+    display: flex;
+    margin-bottom: 50px;
+    a {
+      padding: 10px 20px;
+      color: $color-default-white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 30px;
+    }
+  }
+}
+
+@include hoverLink {
+  color: $color-hover;
+}
+
+
+

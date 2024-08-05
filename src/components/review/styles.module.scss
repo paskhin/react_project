@@ -1,0 +1,41 @@
+.root {
+  padding: 20px;
+  background-color: #434343;
+  color: $color-default-white;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  h3 {
+    font-size: 25px;
+    margin: 0;
+    margin-bottom: 10px;
+  }
+
+  button {
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+  }
+
+  .text {
+    font-size: 15px;
+  }
+
+  .rating {
+    color: #ffff00;
+    font-size: 25px;
+  }
+
+  .text,
+  .rating {
+    display: block;
+    margin-bottom: 20px;
+
+  }
+
+
+}
+
+
+

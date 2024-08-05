@@ -1,0 +1,31 @@
+.root {
+  padding: 5px 7px;
+  cursor: pointer;
+}
+
+.default {
+  background-color: #FFD25D;
+  color: $color-default-white;
+  border: none;
+  border-radius: 20px;
+}
+
+.alternative {
+  background-color: $color-alternative-them;
+  color: $color-default-white;
+  border: none;
+  border-radius: 20px;
+}
+
+.disabled {
+  opacity: 0.5;
+}
+
+@include active {
+  background-color: $color-active;
+}
+
+@include hover {
+  background-color: $color-hover;
+}
+
